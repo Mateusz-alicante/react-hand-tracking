@@ -17,7 +17,7 @@
   "author": "Mateusz Kazimierczak (Mateusz-alicante)",
   "license": "MIT",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "peerDependencies": {
     "react": ">=15.0.1",
@@ -50,5 +50,8 @@
     "react",
     "typescript",
     "react-hand-tracking"
-  ]
+  ],
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.1"
+  }
 }

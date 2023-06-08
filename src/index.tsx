@@ -1,3 +1,3 @@
-import MyCounter from './components/App'
+import ReactHandTracking from './components/App'
 
-export { MyCounter }
+export { ReactHandTracking }
