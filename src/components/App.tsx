@@ -11,6 +11,7 @@ type Props = {
     numHands?: number
     detectionThreshold?: number
   }
+  predictionTimeout?: number
 }
 
 type GestureType =
@@ -23,7 +24,7 @@ type GestureType =
   | 'Victory'
   | 'ILoveYou'
 
-type ReactHandTrackingResult = {
+export type ReactHandTrackingResult = {
   hand: {
     handType: 'Right' | 'Left'
     confidence: number
@@ -54,10 +55,11 @@ const generateResult = (results: GestureRecognizerResult) => {
   return result
 }
 
-const MyCounter = ({
+const ReactHandTracking = ({
   callback = (result: ReactHandTrackingResult[]) => console.log(result),
   videoResolution = { width: 1280, height: 720 },
   recognizerOptions = { numHands: 1, detectionThreshold: 0.5 },
+  predictionTimeout = 0,
 }: Props) => {
   const video = useRef<HTMLVideoElement>(null)
 
@@ -98,7 +100,7 @@ const MyCounter = ({
       const results = gestureRecognizer.recognizeForVideo(video.current!, nowInMs)
       callback(generateResult(results))
     }
-    requestAnimationFrame(predict)
+    setTimeout(() => requestAnimationFrame(predict), predictionTimeout)
   }
 
   useEffect(() => {
@@ -116,4 +118,4 @@ const MyCounter = ({
   )
 }
 
-export default MyCounter
+export default ReactHandTracking

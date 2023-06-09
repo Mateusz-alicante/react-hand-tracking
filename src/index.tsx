@@ -1,3 +1,3 @@
-import ReactHandTracking from './components/App'
+import ReactHandTracking, { ReactHandTrackingResult as ReactHandTrackingResultType } from './components/App'
 
-export { ReactHandTracking }
+export { ReactHandTracking, ReactHandTrackingResultType }
