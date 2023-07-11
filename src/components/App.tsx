@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, memo } from 'react'
 import { FilesetResolver, GestureRecognizer, GestureRecognizerResult } from '@mediapipe/tasks-vision'
 
 let gestureRecognizer: GestureRecognizer
@@ -118,4 +118,12 @@ const ReactHandTracking = ({
   )
 }
 
-export default ReactHandTracking
+export default memo(ReactHandTracking, (prevProps, nextProps) => {
+  if (
+    prevProps.predictionTimeout != nextProps.predictionTimeout ||
+    prevProps.recognizerOptions != nextProps.recognizerOptions ||
+    prevProps.videoResolution != nextProps.videoResolution
+  ) {
+    return false
+  } else return true
+})
