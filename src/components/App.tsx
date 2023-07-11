@@ -67,7 +67,7 @@ const ReactHandTracking = ({
   const setup = async () => {
     if (!video.current) return
     const vision = await FilesetResolver.forVisionTasks(
-      'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm',
+      'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.2-rc2/wasm',
     )
 
     gestureRecognizer = await GestureRecognizer.createFromOptions(vision, {
